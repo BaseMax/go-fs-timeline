@@ -1,6 +1,8 @@
-# go-fs-timeline
+# go fs-timeline
 
 A historical timeline viewer for file system changes. This tool monitors file system changes in real-time using OS-native watchers, persists events to a local SQLite database, and provides powerful querying and visualization capabilities.
+
+![go fs-timeline](preview.jpg)
 
 ## Features
 
