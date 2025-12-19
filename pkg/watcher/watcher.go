@@ -61,7 +61,7 @@ func (w *Watcher) Watch(ctx context.Context) error {
 			if !ok {
 				return nil
 			}
-			fmt.Printf("Watcher error: %v\n", err)
+			fmt.Printf("[ERROR] File system watcher error: %v\n", err)
 
 		case <-ticker.C:
 			w.flush()
@@ -107,9 +107,9 @@ func (w *Watcher) flush() {
 	w.bufferMu.Unlock()
 
 	if err := w.db.InsertEvents(events); err != nil {
-		fmt.Printf("Failed to flush events: %v\n", err)
+		fmt.Printf("[ERROR] Failed to flush %d events to database: %v\n", len(events), err)
 	} else {
-		fmt.Printf("Flushed %d events to database\n", len(events))
+		fmt.Printf("[INFO] Flushed %d events to database\n", len(events))
 	}
 }
 
